@@ -1,0 +1,36 @@
+<h1>登山地登録</h1>
+<!-- form_for部分 -->
+<%= form_for(@item) do |f| %>
+ 
+ <div class="field">
+   <%= f.label "山名" %>
+    <%= f.text_field :name %>
+ </div>
+    
+ <div class="field">
+    <%= f.label "地域" %>
+    <%= f.text_field :area %>
+</div>
+
+ <div class="field">
+    <%= f.label "山域" %>
+    <%= f.text_field :range %>
+</div>
+ 
+ <div class="field">
+    <%= f.label "標高" %>
+    <%= f.text_field :elevation %>
+ </div>
+    
+   <div class="field">
+    <%= f.label "概要" %>
+    <%= f.text_area :overview %>
+   </div>
+
+   <div class="field">
+   	 <%= f.label "イメージ" %>
+   	 <%= f.attachment_field :image %>
+   </div>
+    <%= f.submit '投稿' %>
+ 
+<% end %>

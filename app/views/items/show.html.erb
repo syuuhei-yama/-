@@ -1,0 +1,29 @@
+<h2>画像</h2>
+<%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %>
+<table>
+<tb><h2>山名</h2>
+<p><%= @item.name %></p>
+</tb>
+<tb>
+<h2>地域</h2>
+<p><%= @item.area %></p>
+</tb>
+<tb>
+<h2>山域</h2>
+<p><%= @item.range %></p>
+</tb>
+
+<h2>標高</h2>
+<p><%= @item.elevation %></p>
+
+<h2>概要</h2>
+<p><%= @item.overview %></p>
+</table>
+
+
+
+<div>
+<%= link_to "一覧へ", items_path %>
+</div>
+<%= link_to "編集", edit_item_path(@item.id) %>
+<%= link_to "削除", item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
