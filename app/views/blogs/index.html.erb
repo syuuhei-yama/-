@@ -1,0 +1,33 @@
+<div>
+ <%= link_to "登録", new_blog_path %>
+</div>
+<h1>登山記録投稿一覧</h1>
+<!-- form_for部分 -->
+<% @blogs.each do |blog| %>
+
+<p>タイトル</p>
+    <span>
+    	<%=link_to blog.title, blog_path(blog.id) %>
+    </span>
+ <p></p>
+  <%= attachment_image_tag blog, :image, :fill, 100, 100, format: 'jpeg' %>
+<% end %>
+
+
+
+<h1>コメント</h1>
+<% if user_signed_in? %>
+  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+  
+  <hr>
+  <h2>投稿一覧</h2>
+  <% @blogs.each do |blog| %>
+    <a href="/users/<%= blog.user.id %>"><%= blog.user.email %></a>
+    
+  <% end %>
+
+<% else %>
+  <%= link_to "ユーザー登録", new_user_registration_path %>
+  <%= link_to "ログイン", new_user_session_path %>
+<% end %>

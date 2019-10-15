@@ -1,0 +1,41 @@
+
+<h1>写真の投稿</h1>
+<!-- form_for部分 -->
+<%= form_for(@photo) do |f| %>
+ 
+ 
+ <div class="field">
+   <%= f.label "タイトル" %>
+    <%= f.text_field :title %>
+ </div>
+    
+ <div class="field">
+    <%= f.label "撮影者" %>
+    <%= f.text_field :name %>
+</div>
+
+ <div class="field">
+    <%= f.label "撮影日" %>
+    <%= f.text_field :date %>
+</div>
+ 
+ <div class="field">
+    <%= f.label "撮影場所" %>
+    <%= f.text_field :location %>
+ </div>
+    
+   <div class="field">
+    <%= f.label "コメント" %>
+    <%= f.text_area :comment %>
+   </div>
+
+   <div class="field">
+   	 <%= f.label "写真" %>
+   	 <%= f.attachment_field :image %>
+   </div>
+
+    <%= f.submit '投稿' %>
+ 
+<% end %>
+
+  <%= link_to "一覧に戻る",photos_path %>

@@ -8,5 +8,11 @@ Rails.application.routes.draw do
 root  'users#about'
 resources :users
 resources :items
+ resources :blogs do
+ resources :comments, only: [:create]
+end
+resources :admins
+resources :photos
+get "users_mypage" =>'users#mypage'
 end
 

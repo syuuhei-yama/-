@@ -1,0 +1,39 @@
+<h1>登山記録投稿</h1>
+<!-- form_for部分 -->
+<%= form_for(@blog) do |f| %>
+ 
+ <div class="field">
+   <%= f.label "タイトル" %>
+    <%= f.text_field :title %>
+ </div>
+    
+
+ <div class="field">
+    <%= f.label "メンバー" %>
+    <%= f.text_field :member %>
+</div>
+ 
+ <div class="field">
+    <%= f.label "アクセス方法" %>
+    <%= f.text_field :access %>
+ </div>
+    
+   <div class="field">
+    <%= f.label "スケジュール" %>
+    <%= f.text_area :schedule %>
+   </div>
+
+   <div class="field">
+    <%= f.label "レビュー" %>
+    <%= f.text_area :review %>
+   </div>
+
+   <div class="field">
+   	 <%= f.label "写真" %>
+   	 <%= f.attachment_field :image %>
+   </div>
+    <%= f.submit '投稿' %>
+ 
+<% end %>
+
+<%= link_to "一覧へ", blogs_path %>

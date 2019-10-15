@@ -6,24 +6,29 @@
   <%= f.submit '地図表示' %>
 <% end %>
 
-<div id='map'></div>
-
 <style>
-#map{
-  height: 600px;
-  width: 800px;
-}
-</style>
+      #maps{ height: 400px; width: 400px; }
+    </style>
+  <div id="maps"></div>
+  <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAK2GCxjx0SLVQjgaS-qbltlAS_9I8cD9Q&callback=initMap" async></script>
+  <script>
+    function initMap() {
+      var mapPosition = {lat: 35.663084, lng: 139.699486};
+      var mapArea = document.getElementById('maps');
+      var mapOptions = {
+        center: mapPosition,
+        zoom: 8,
+      };
+      var map = new google.maps.Map(mapArea, mapOptions);
 
-<script>
-	let mapInstance //この変数はmap.js.erbでも使うのでタイプミスに注意
-	
-function initMap(){
-  let map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 35.666, lng: 139.690},
-  zoom: 8
-  });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK2GCxjx0SLVQjgaS-qbltlAS_9I8cD9Q&callback=initMap" async defer></script>
+      // ↓↓↓ 当記事ではここから解説 ↓↓↓
+      var markerOptions = {
+        map: map,
+        position: mapPosition,
+      };
+      var marker = new google.maps.Marker(markerOptions);
+      // ↑↑↑ 当記事ではここまで解説 ↑↑↑
+    }
+  </script>
+
 <!--ここまで-->

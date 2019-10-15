@@ -1,0 +1,38 @@
+<h1>編集画面</h1>
+<%= form_for(@blog) do |f| %>
+ 
+ <div class="field">
+   <%= f.label "タイトル" %>
+    <%= f.text_field :title %>
+ </div>
+    
+
+ <div class="field">
+    <%= f.label "メンバー" %>
+    <%= f.text_field :member %>
+</div>
+ 
+ <div class="field">
+    <%= f.label "アクセス方法" %>
+    <%= f.text_field :access %>
+ </div>
+    
+   <div class="field">
+    <%= f.label "スケジュール" %>
+    <%= f.text_field :schedule %>
+   </div>
+
+   <div class="field">
+    <%= f.label "感想" %>
+    <%= f.text_area :review %>
+   </div>
+
+   <div class="field">
+     <%= f.label "写真" %>
+     <%= f.attachment_field :image %>
+   </div>
+    <%= f.submit '投稿' %>
+ 
+<% end %>
+
+

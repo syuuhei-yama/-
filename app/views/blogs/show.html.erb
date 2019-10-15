@@ -1,0 +1,44 @@
+
+<h2>タイトル</h2>
+<%#= binding.pry %>
+<h2><%= @blog.title %></h2>
+
+<h3>写真</h3>
+<%= attachment_image_tag @blog, :image, :fill, 300, 300, format: 'jpeg' %>
+
+<h2>メンバー</h2>
+<p><%= @blog.member %></p>
+ 
+<h2>スケジュール</h2>
+<p><%= @blog.schedule  %></p>
+
+<h2>アクセス方法</h2>
+<p><%= @blog.access  %></p>
+
+<h2>レビュー</h2>
+<p><%= @blog.review  %></p>
+
+
+<br>
+<%= link_to "編集", edit_blog_path(@blog.id) %>
+<%= link_to "削除", blog_path(@blog.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<h1>投稿詳細ページ</h1>
+<h3><%= @blog.user.email %></h3>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @blog.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+
+<%= form_for [@blog, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<%= link_to "戻る", blogs_path %>

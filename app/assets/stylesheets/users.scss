@@ -3,8 +3,30 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .top-info{
-	background-color: #FFFF99;
+	background-color: #99FF99;
 }
+.video_img{
+  text-align: center;
+}
+.top-text{
+  text-align: center;
+  background-color: #808080;
+  color: #FFFFFF;
+}
+.title-text{
+  text-align: center;
+  font-family:monospace;
+  color: block ;
+}
+.title-text h1{
+  font-size: 50px;
+}
+.top-about-left{
+  font-size: 23px;
+  text-align: center;
+  font-style:italic;
+}
+
 
 #stage {
 position: relative;
@@ -79,9 +101,10 @@ animation-delay: 40s;
 
 .top-info-info o {
   position: absolute;/*絶対配置*/
-  color: #FFFF00;
+  color:white;
   top: 0;
   left: 0;
+  text-align: center;
   }
 
 .top-info-info img {
@@ -90,10 +113,11 @@ animation-delay: 40s;
 
 
 .main-visiual-text {
-color: block;
-font-size: 23px;
+font-size: 22px;
 }
 .top-about-under  {
-	background-image: url(istockphoto-85.jpg);
-	width: 100%;
+  background-image: url(istockphoto-85.jpg);
+  width: 100%;
 }
+
+

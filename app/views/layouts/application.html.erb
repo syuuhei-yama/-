@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>YAMA</title>
@@ -11,31 +10,88 @@
     <!-- <link rel="stylesheet" href="css/style.css" media="all"> -->
   </head>
 
- <body>
+ <header class="navbar-inverse">
+   <% if admin_signed_in? %>
         <div class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="row nav navbar-nav">
 
           <div class="col-xs-12">
-
+           <div class="top-logo-li col-xs-4">
+              <div class="top-logo">
+                <%= link_to root_path,data: {"turbolinks" => false} do %>
+                <%=image_tag "logo.top.png", size: "50×50" %>
+               <% end %>
+              </div>
+            </div>
             <div class="col-xs-3 col-xs-offset-1">
                 <div class="right-nav">
                       <%= link_to "管理者ログイン",new_admin_session_path,:style=>"color:#FFFF00;"%>
-                    <div class="right-nav-user-button">
-                      <%=link_to 'ユーザー新規登録',new_user_registration_path,:style=>"color:#FFFF00;" %>
+                <div class="right-nav-user-button">
+                      　<%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete,:style=>"color:#FFFF00;" %>
+                    </div>
+                 <div class="navbar-form navbar-left-right">
+              <span data-turbolinks="false">
+              <div class="form-group">
+                <form class="camp_site_search" id="camp_site_search" action="/camp_sites" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+                    <input class="form-control" placeholder="登山地検索" type="search" name="q[name_cont]" id="q_name_cont">
+                    <input type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索">
+</form>              </div>
+              </span>
+              </div>
+                 
+
+              <% elsif user_signed_in? %>
+          <div class="right-nav-user-button">
+                  <%= link_to'マイページ',users_mypage_path,:style=>"color:#FFFF00;" %><br>
+                  <%= link_to ' HOME',users_path,:style=>"color:#FFFF00;" %><br>
+                  <%= link_to 'ABOUT',root_path,:style=>"color:#FFFF00;" %><br>
+                  <%= link_to 'ユーザーログアウト',destroy_user_session_path,method: :delete,:style=>"color:#FFFF00;" %><br>
+              <div class="top-logo">
+                <%= link_to root_path,data: {"turbolinks" => false} do %>
+                        <%=image_tag "logo.top.png", size: "50×50" %>
+                <% end %>
+              </div>
+          </div>
+      </div> 
+
+              <div class="top-logo">
+              </div> 
+            
+               </div>
+                    <div class="navbar-form navbar-left-right">
+              <span data-turbolinks="false">
+              <div class="form-group">
+                <form class="camp_site_search" id="camp_site_search" action="/camp_sites" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+                    <input class="form-control" placeholder="登山地検索" type="search" name="q[name_cont]" id="q_name_cont">
+                    <input type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索">
+</form>              </div>
+              </span>
+              
+                <% else %>
+              <div class="right-nav-user-button">
+                      <li><%= link_to 'こんにちは、ゲストさん' %></li>
+                      <li><%= link_to ' HOME',users_path,:style=>"color:#FFFF00;" %></li>
+                      <li><%= link_to 'ABOUT',root_path,:style=>"color:#FFFF00;" %></li>
+                  
+                      <li><%=link_to 'ユーザー新規登録',new_user_registration_path,:style=>"color:#FFFF00;" %></li>
+                      <li><%= link_to ' ユーザーログイン',new_user_session_path,:style=>"color:#FFFF00;" %></li>
+                    
+                    <div class="top-logo">
+                <%= link_to root_path,data: {"turbolinks" => false} do %>
+                <%=image_tag "logo.top.png", size: "50×50" %>
+               <% end %>
+            </div>
+                  </div>
+                     <div class="right-nav">
+                      <%= link_to "管理者ログイン",new_admin_session_path %>
                     </div>
 
-                     <div class="right-nav-user-button">
-                      <%= link_to ' ユーザーログイン',new_user_session_path,:style=>"color:#FFFF00;" %>
-                     </div>
-                </div>
-            </div>
+            
+        </div>
+      </div>
 
-            <div class="top-logo-li col-xs-4">
-              <div class="top-logo">
-              <%= link_to"Climbing Life",root_path,:style=>"color:#1E90FF;" %>
-              </div>
-            </div>
+            
 
             <!-- nav検索ここから -->
             <div class="navbar-form navbar-left-right">
@@ -48,7 +104,7 @@
               </span>
             </div>
             <!-- 検索ここまで -->
-
+ 
 
             <div id="hm-icon">
               <a class="menu-trigger" href="#">
@@ -64,8 +120,12 @@
         </div>
     </div>
   </div> 
-
+    <% end %>
+</header><!-- /header -->
+ <body>
     <%= yield %>
-  </body>
-  
+ </body>
+  <footer>
+    <%= image_tag 'publicdomainq-0023635zun.jpg', :size =>'1450x250'%>
+  </footer>
 </html>

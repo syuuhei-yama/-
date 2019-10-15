@@ -1,0 +1,12 @@
+<h1>投稿写真一覧</h1>
+ <% @photos.each do |photo| %>
+    <p>タイトル</p>
+    <span>
+    	<%= link_to photo.title, photo_path(photo.id) %>
+    </span>
+    <p>写真</p>
+  <%= attachment_image_tag photo, :image, :fill, 100, 100, format: 'jpeg' %>
+ <% end %>
+<div>
+ <%= link_to "登録", new_photo_path %>
+</div>

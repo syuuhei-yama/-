@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_060436) do
+ActiveRecord::Schema.define(version: 2019_10_15_074736) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -28,6 +28,28 @@ ActiveRecord::Schema.define(version: 2019_10_09_060436) do
     t.string "name"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "access"
+    t.string "schedule"
+    t.integer "member"
+    t.text "review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_id"
+    t.integer "user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "user_id"
+    t.integer "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_comments_on_blog_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -48,13 +70,14 @@ ActiveRecord::Schema.define(version: 2019_10_09_060436) do
   end
 
   create_table "photos", force: :cascade do |t|
+    t.string "title"
+    t.string "name"
+    t.string "date"
+    t.string "location"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "records", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "image_id"
   end
 
   create_table "users", force: :cascade do |t|
