@@ -1,21 +1,130 @@
+<div class="bottom_img">
+  <%= image_tag '244737.jpg',size:300 %>
+  </div>
+
 <div class='top-text'>
-<h2>やりたいことも、楽しいことも、見つけられるかは、自分次第</h2>
+<h2>山はこれ以上大きくならないが、私たちはいくらでも成長できる</h2>
 </div>
 
 <div class = "main-index-img">
-   <%= image_tag 'adventure-climb-climber-1043574.jpg', :size =>'1430x600' %>
+   <div id="container">
+        <div id="theTarget">
+            <div style="background-image: url(<%= asset_path("adventure-climb-climber-1043574.jpg") %>)"></div>
+            <div style="background-image: url(<%= asset_path("KM19814269_TP_V.jpg") %>"></div>
+            <div style="background-image: url(<%= asset_path("TKL180916008_TP_V.jpg") %>"></div>
+            <div style="background-image: url(<%= asset_path("KM19814290_TP_V.jpg") %>"></div>
+            <div style="background-image: url(<%= asset_path("011YAMASHA601_TP_V.jpg") %>"></div>
+        </div>
+    </div>
 </div>
 
-<h2>天気情報</h2>
-<br>
-<br>
-<br>
-<h2>投稿新着一覧</h2>
 
-<br>
-<br>
-<br>
-<h2>思い出の一枚</h2>
-　<div class="video_img">
-	<%= video_tag("/assets/videos/Pexels Videos 1583096.mp4", :autoplay => true, :loop => true, :size =>'1200x600' ) %>
+
+<script type="text/javascript">
+  $(function() {
+    var API_KEY = "6cdb63a6e3091f0a9fa0054b678405d3"
+    var city = 'Tokyo';
+    var url = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
+    $.ajax({
+      url: url,
+      dataType: "json",
+      type: 'GET',
+    })
+    .done(function(data) {
+      console.log("");
+      var insertHTML = "";
+      var cityName = '<h2>' + data.city.name + '</h2>';
+      $('#city-name').html(cityName);
+      for (var i = 0; i <= 8; i = i + 2) {
+        insertHTML += buildHTML(data, i);
+      }
+      $('#weather').html(insertHTML);
+    })
+    .fail(function(data) {
+      console.log("失敗しました");
+    });
+  });
+      function buildHTML(data, i) {
+  var Week = new Array("（日）","（月）","（火）","（水）","（木）","（金）","（土）");
+  var date = new Date (data.list[i].dt_txt);
+  date.setHours(date.getHours() + 9);
+  var month = date.getMonth()+1;
+  var day = month + "月" + date.getDate() + "日" + Week[date.getDay()] + date.getHours() + "：00";
+  var icon = data.list[i].weather[0].icon;
+  var html =
+  '<div class="weather-report">' +
+    '<img src="http://openweathermap.org/img/w/' + icon + '.png">' +
+    '<div class="weather-date">' + day + '</div>' +
+    '<div class="weather-main">'+ data.list[i].weather[0].main + '</div>' +
+    '<div class="weather-temp">' + Math.round(data.list[i].main.temp) + '℃</div>' +
+  '</div>';
+  return html
+}
+</script>
+<div class="js">
+  <h2>天気情報</h2>
+  <div id="city-name">
   </div>
+  <div id="weather"></div>
+</div>
+
+  <br>
+  <br>
+  <hr>
+  <div class="title-h10">
+<h2>新着投稿一覧:記録(レコード)</h2></div><hr>
+<div id="Carousel" class="glide">
+        <ul class="gride__wrapper">
+          <% @blogs.each do |blog| %>
+                <%= link_to blog_path(blog), data: {"turbolinks" => false} do %>
+                  <%= attachment_image_tag blog, :image, :fill, 250, 250 %>
+                <% end %>
+              </li>
+          <% end %>
+          </ul>
+        </div>
+
+
+
+
+<h2>新着投稿一覧:写真(フォトグラフ)</h2>
+          <% @photos.each do |photo| %>
+          <p>
+           <%= link_to photo.title, photo_path(photo.id) %></p>
+                <p><%= link_to photo_path(photo), data: {"turbolinks" => false} do %>
+                  <%= attachment_image_tag photo, :image, :fill, 200, 200 %></p>
+                <% end %>
+              </li>
+          <% end %>
+          
+
+
+
+  <script>
+   $('.gride__wrapper').slick({
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+    </script>
+ 

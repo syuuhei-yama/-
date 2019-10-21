@@ -1,18 +1,24 @@
 class ItemsController < ApplicationController
 	def index
-		@items = Item.all
+        @q = Item.ransack(params[:q])
+        @items = @q.result(distinct: true)
 	end
+
 	def new
 		@item = Item.new
 	end
+
 	def show
 		@item = Item.find(params[:id])
 	end
+
 	def create
+        byebug
          item = Item.new(item_params)
          item.save
          redirect_to items_path
     end
+
     def edit
     	@item = Item.find(params[:id])
     end
@@ -22,16 +28,16 @@ class ItemsController < ApplicationController
         item.update(item_params)
         redirect_to item_path(item.id)
     end
-   
+
     def destroy
     	item = Item.find(params[:id]) 
-        item.destroy 
+        item.destroy
         redirect_to item_path 
     end
 
+
     private
-   
     def item_params
-        params.require(:item).permit(:name,:area,:range,:elevation,:overview,:image)
+        params.require(:item).permit(:name,:area,:range,:elevation,:overview,:address,:image)
     end
 end

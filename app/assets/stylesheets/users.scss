@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .top-info{
-	background-color: #99FF99;
+	background-image: url(1087554.jpg);
+  color: #000000;
 }
 .video_img{
   text-align: center;
@@ -13,7 +14,7 @@
   background-color: #808080;
   color: #FFFFFF;
 }
-.title-text{
+.title-text {
   text-align: center;
   font-family:monospace;
   color: block ;
@@ -116,8 +117,16 @@ animation-delay: 40s;
 font-size: 22px;
 }
 .top-about-under  {
-  background-image: url(istockphoto-85.jpg);
+  background-image: url(1087554.jpg);
   width: 100%;
+  background-position: top ;
+}
+.js {
+  float: left;
+  border-color: #FFFFFF;
+  padding-top: 70px;
 }
 
-
+.bottom_img {
+  text-align: center;
+}

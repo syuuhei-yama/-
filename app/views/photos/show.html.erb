@@ -12,8 +12,12 @@
 <h2>撮影場所</h2>
 <p><%= @photo.location %></p>
 
-<h2>コメント</h2>
+<h2>説明</h2>
 <p><%= @photo.comment %></p>
+
+
+
+<!--ここまで-->
 
 
 <div>
@@ -22,3 +26,24 @@
 
 <%= link_to "編集", edit_photo_path(@photo.id) %> 
 <%= link_to "削除", photo_path(@photo), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+<h1>投稿詳細ページ</h1>
+<h3><%= @photo.user.email %></h3>
+<h3><%#= @photo.content %></h3>
+
+<h2>コメント一覧</h2>
+<% @photo_comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %>
+
+<%= form_for [@photo, @photo_comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<%= link_to "ホームへ戻る", photos_path %>

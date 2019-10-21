@@ -12,7 +12,11 @@ resources :items
  resources :comments, only: [:create]
 end
 resources :admins
-resources :photos
-get "users_mypage" =>'users#mypage'
+resources :photos do
+resources :photo_comments, only: [:create]
 end
 
+get "users_mypage" =>'users#mypage'
+get 'quit' => 'users#quit'
+
+end

@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
 	def create
 		blog = Blog.new(blog_params)
 		blog.user_id = current_user.id
-	    if @post.save
+	    if blog.save
 	      redirect_back(fallback_location: blogs_path)
 	    else
 	      redirect_back(fallback_location: blogs_path)
@@ -20,7 +20,6 @@ class BlogsController < ApplicationController
 
 	def show
 	  @blog = Blog.find(params[:id])
-	  # binding.pry
 	  @comments = @blog.comments
       @comment = Comment.new
 	end
@@ -45,6 +44,6 @@ class BlogsController < ApplicationController
 	private
 
 	def blog_params
-	  params.require(:blog).permit(:title,:member,:access,:schedule,:review ,:image,:content)
+	  params.require(:blog).permit(:title,:member,:access,:schedule,:review,:image,:content)
     end
 end

@@ -1,4 +1,5 @@
 
+<html>
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>YAMA</title>
@@ -7,6 +8,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <!-- <link rel="stylesheet" href="css/style.css" media="all"> -->
   </head>
 
@@ -20,7 +23,7 @@
            <div class="top-logo-li col-xs-4">
               <div class="top-logo">
                 <%= link_to root_path,data: {"turbolinks" => false} do %>
-                <%=image_tag "logo.top.png", size: "50×50" %>
+                <%=image_tag "japan.png", size: "50×50" %>
                <% end %>
               </div>
             </div>
@@ -30,92 +33,61 @@
                 <div class="right-nav-user-button">
                       　<%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete,:style=>"color:#FFFF00;" %>
                     </div>
-                 <div class="navbar-form navbar-left-right">
-              <span data-turbolinks="false">
-              <div class="form-group">
-                <form class="camp_site_search" id="camp_site_search" action="/camp_sites" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-                    <input class="form-control" placeholder="登山地検索" type="search" name="q[name_cont]" id="q_name_cont">
-                    <input type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索">
-</form>              </div>
-              </span>
+              <div class = "nav-seach">
+               <%= search_form_for @q do |f| %>
+                   <%= f.label :name_cont ,'登山場所検索'%>
+                   <%= f.search_field :name_cont %>
+                   <%= f.submit %>
+                <% end %>
               </div>
-                 
 
               <% elsif user_signed_in? %>
           <div class="right-nav-user-button">
-                  <%= link_to'マイページ',users_mypage_path,:style=>"color:#FFFF00;" %><br>
-                  <%= link_to ' HOME',users_path,:style=>"color:#FFFF00;" %><br>
-                  <%= link_to 'ABOUT',root_path,:style=>"color:#FFFF00;" %><br>
-                  <%= link_to 'ユーザーログアウト',destroy_user_session_path,method: :delete,:style=>"color:#FFFF00;" %><br>
+                  <%= link_to'マイページ',users_mypage_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %><br>
+                  <%= link_to ' HOME',users_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %><br>
+                  <%= link_to 'ABOUT',root_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %><br>
+                  <%= link_to 'ユーザーログアウト',destroy_user_session_path, data: {"turbolinks" => false},method: :delete,:style=>"color:#FFFF00;" %><br>
               <div class="top-logo">
                 <%= link_to root_path,data: {"turbolinks" => false} do %>
-                        <%=image_tag "logo.top.png", size: "50×50" %>
+                        <%=image_tag "japan.png", size: "50×50" %>
                 <% end %>
+             <div class = "nav-seach">
+                <%= search_form_for @q do |f| %>
+                   <%= f.search_field :name_cont %>
+                   <%= f.submit %>
+                 <% end %>
+             </div>
+
               </div>
           </div>
-      </div> 
+      </div>
 
-              <div class="top-logo">
-              </div> 
-            
-               </div>
-                    <div class="navbar-form navbar-left-right">
-              <span data-turbolinks="false">
-              <div class="form-group">
-                <form class="camp_site_search" id="camp_site_search" action="/camp_sites" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-                    <input class="form-control" placeholder="登山地検索" type="search" name="q[name_cont]" id="q_name_cont">
-                    <input type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索">
-</form>              </div>
-              </span>
-              
                 <% else %>
               <div class="right-nav-user-button">
                       <li><%= link_to 'こんにちは、ゲストさん' %></li>
-                      <li><%= link_to ' HOME',users_path,:style=>"color:#FFFF00;" %></li>
-                      <li><%= link_to 'ABOUT',root_path,:style=>"color:#FFFF00;" %></li>
-                  
-                      <li><%=link_to 'ユーザー新規登録',new_user_registration_path,:style=>"color:#FFFF00;" %></li>
-                      <li><%= link_to ' ユーザーログイン',new_user_session_path,:style=>"color:#FFFF00;" %></li>
-                    
+                      <li><%= link_to ' HOME',users_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %></li>
+                      <li><%= link_to 'ABOUT',root_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %></li>
+
+                      <li><%=link_to 'ユーザー新規登録',new_user_registration_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %></li>
+                      <li><%= link_to ' ユーザーログイン',new_user_session_path, data: {"turbolinks" => false},:style=>"color:#FFFF00;" %></li>
+
                     <div class="top-logo">
                 <%= link_to root_path,data: {"turbolinks" => false} do %>
-                <%=image_tag "logo.top.png", size: "50×50" %>
+                <%=image_tag "japan.png", size: "50×50" %>
                <% end %>
-            </div>
-                  </div>
-                     <div class="right-nav">
-                      <%= link_to "管理者ログイン",new_admin_session_path %>
-                    </div>
-
-            
+           <div class = "nav-seach">
+                <%= search_form_for @q do |f| %>
+                   <%= f.search_field :name_cont %>
+                   <%= f.submit %>
+                 <% end %>
+           </div> 
         </div>
       </div>
 
-            
+             
+        </div>
+      </div>
 
-            <!-- nav検索ここから -->
-            <div class="navbar-form navbar-left-right">
-              <span data-turbolinks="false">
-              <div class="form-group">
-                <form class="camp_site_search" id="camp_site_search" action="/camp_sites" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-                    <input class="form-control" placeholder="登山地検索" type="search" name="q[name_cont]" id="q_name_cont">
-                    <input type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索">
-</form>              </div>
-              </span>
-            </div>
-            <!-- 検索ここまで -->
- 
-
-            <div id="hm-icon">
-              <a class="menu-trigger" href="#">
-                <span></span>
-                <span></span>
-                <span></span>
-              </a>
-            </div>
-<!--            <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
- -->
           </div>
         </div>
     </div>
@@ -123,6 +95,28 @@
     <% end %>
 </header><!-- /header -->
  <body>
+  <div id="sp-menu">
+      <h2>MENU</h2>
+      <ul>
+       <li><%= link_to "HOMEに戻る",users_path,data: {"turbolinks" => false} %></li>
+       <li><%= link_to "登山地一覧",items_path,data: {"turbolinks" => false} %></li>
+       <li><%= link_to "投稿記録一覧",blogs_path,data: {"turbolinks" => false} %></li>
+       <li><%= link_to "投稿写真一覧",photos_path,data: {"turbolinks" => false} %></li>
+       <li><%= link_to "登山地一覧",items_path,data: {"turbolinks" => false} %></li>
+       <li><%= link_to "管理者ログイン",new_admin_session_path,data: {"turbolinks" => false} %></li>
+      </ul>
+    </div>
+ 
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+ 
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <%= yield %>
  </body>
   <footer>
