@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_090058) do
+ActiveRecord::Schema.define(version: 2019_10_25_170412) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -53,6 +53,20 @@ ActiveRecord::Schema.define(version: 2019_10_17_090058) do
   end
 
   create_table "end_users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_blogs", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "blog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_photos", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "photo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_090058) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

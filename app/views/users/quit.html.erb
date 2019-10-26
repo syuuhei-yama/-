@@ -12,7 +12,7 @@
         <tbody>
           <tr>
             <td><%= link_to "退会します ",users_path, method: :delete  %></td>
-            <td><%= link_to "退会しません", users_mypage_path  %></td> 
+            <td><%= link_to "退会しません", user_path(current_user.id)  %></td> 
           </tr>
         </tbody>
       </table>

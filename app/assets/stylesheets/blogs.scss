@@ -1,3 +1,40 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.blog-main {
+	text-align: center;
+	background-image: url(1653428.jpg);
+	background-size: 1000px 350px;
+	background-position: center;
+}
+.blog-main-text{
+	padding-top: 50px;
+	
+}
+.views{
+	padding-left: 500px;
+	padding-top: 50px;
+	font-size: 20px;
+}
+.blog-text{
+	text-align: center;
+	color: #333333;
+	margin-top: 50px;
+}
+.blog-title{
+	font-style: oblique;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 10px;
+}
+.blogs-main{
+	background-image: url(845220.jpg);
+	background-position: center;
+}
+.blog-images{
+	padding-left: 10px;
+}
+.favorite{
+	padding-left: 20px;
+	font-size: 20px;
+}

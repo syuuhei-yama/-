@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 	def index
         @q = Item.ransack(params[:q])
-        @items = @q.result(distinct: true)
+        @items = @q.result.page(params[:page]).per(5)
 	end
 
 	def new
@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-        byebug
          item = Item.new(item_params)
          item.save
          redirect_to items_path

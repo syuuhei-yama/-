@@ -17,12 +17,39 @@
 //= require jquery_ujs
 //= require_tree .
 
+
+$(function() {
+  var h = $(window).height();
+ 
+  $('#wrap').css('display','none');
+  $('#loader-bg ,#loader').height(h).css('display','block');
+});
+ 
+$(window).load(function () { //全ての読み込みが完了したら実行
+  $('#loader-bg').delay(900).fadeOut(800);
+  $('#loader').delay(600).fadeOut(300);
+  $('#wrap').css('display', 'block');
+});
+ 
+//10秒たったら強制的にロード画面を非表示
+$(function(){
+  setTimeout('stopload()',10000);
+});
+ 
+function stopload(){
+  $('#wrap').css('display','block');
+  $('#loader-bg').delay(900).fadeOut(800);
+  $('#loader').delay(600).fadeOut(300);
+}
+
+
+
 $("document").ready(function() {
  
 // オプションを指定してSkipprの実行
   $("#theTarget").skippr({
     // スライドショーの変化 ("fade" or "slide")
-    transition : 'slide',
+    transition : 'fade',
     // 変化に係る時間(ミリ秒)
     speed : 3000,
     // easingの種類
@@ -32,7 +59,7 @@ $("document").ready(function() {
     // 子要素の種類("div" or "img")
     childrenElementType : 'div',
     // ナビゲーション矢印の表示(trueで表示)
-    arrows : true,
+    arrows : false,
     // スライドショーの自動再生(falseで自動再生なし)
     autoPlay : true,
     // 自動再生時のスライド切替間隔(ミリ秒)
@@ -43,3 +70,4 @@ $("document").ready(function() {
     hidePrevious : false
   });
 });
+

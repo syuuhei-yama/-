@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-  	@photos = Photo.all
+  	@photos = Photo.page(params[:page]).per(5)
     @photo = Photo.new
   end
 
@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
   end
 
   def update
-  	photo = Photo.find(params[:id])
+  	 photo = Photo.find(params[:id])
   	 photo.update(photo_params)
   	 redirect_to photos_path(photo.id)
   end

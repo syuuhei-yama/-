@@ -1,0 +1,80 @@
+<div class="mypage-main">
+  <div class="mypage">
+  <h2>マイページ</h2>
+   <div class="profile-container">
+<% if user_signed_in? && current_user.id.to_s == params[:id] %>
+      <h3 class="profile-name">名前(アドレス)<%= @user.name %></h3>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+      <% if @user.id == current_user.id %>
+          <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "pull-right" %></p>
+      <% end %>
+   </div>
+
+<%= current_user.name %>
+    <section class="sct-color-1 slice">
+  <div class="container-fluid masonry-container">
+  <div class="row">
+
+    <div class="user-record">
+    <%= link_to '登山記録登録',new_blog_path %>
+    </div>
+
+    <div　class="user-photo">
+    <%= link_to '写真登録',new_photo_path %>
+    </div>
+
+    <div class= "user-destroy">
+    <%= link_to "退会ページ", quit_path %>
+
+<% else %>
+    <%= event.user.name %>
+<% end %>
+    </div>
+
+    
+   </div>
+  </div>
+
+
+<section class="sct-color-1 slice">
+  <div class="container-fluid masonry-container">
+    <div class="row">
+      <div class="col-md-8 col-sm-offset-2">
+        <div class="masonry-wrapper-cols">
+            <% @blogs.each do |blog| %>
+
+				<p>タイトル</p>
+				    <span>
+				    	<%=link_to blog.title, blog_path(blog.id) %>
+				    </span>
+				 <p></p>
+				  <%= attachment_image_tag blog, :image, :fill, 100, 100, format: 'jpeg' %>
+			<% end %>
+
+            <%= paginate @blogs, class: "pagenate" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sct-color-1 slice">
+  <div class="container-fluid masonry-container">
+    <div class="row">
+      <div class="col-md-8 col-sm-offset-2">
+        <div class="masonry-wrapper-cols">
+            <% @photos.each do |photo| %>
+    <p>タイトル</p>
+       <span><%= link_to photo.title, photo_path(photo.id) %></span>
+    <p>写真</p>
+  <%= attachment_image_tag photo, :image, :fill, 100, 100, format: 'jpeg' %>
+			<% end %>
+            <%= paginate @photos, class: "pagenate" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+

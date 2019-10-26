@@ -1,3 +1,28 @@
 // Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photo-main{
+ background-image: url(260078.jpg);
+ background-position: bottom;
+}
+.photo-text {
+	padding-left: 200px;
+	font-size: 20px;
+	font-style: oblique;
+	padding-top: 40px;
+}
+.photo-index{
+	background-image: url(1583118.jpg);
+	background-position: bottom;
+	background-size: 100% 800px;
+	padding-left: 30px;
+}
+.photo-title {
+	font-size: 20px;
+	padding-left: 60px;
+	margin-top: 10px;
+}
+.like-photo {
+	font-size:20px;
+}

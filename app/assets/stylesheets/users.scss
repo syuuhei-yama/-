@@ -2,9 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .top-info{
-	background-image: url(1087554.jpg);
-  color: #000000;
+	background-image: url(800587.jpg);
+  color:block;
+  background-position: center;
 }
 .video_img{
   text-align: center;
@@ -27,12 +29,29 @@
   text-align: center;
   font-style:italic;
 }
+.mypage {
+  text-align: center;
+  font-size: 25px;
+  box-shadow: 10px 10px 10px 10px rgba(1,1,0,0.2) inset;
+}
+.mypage-main {
+  background-image: url(1633950.jpg);
+  background-position: top;
+}
+.user-destroy {
+  text-align: right;
+}
+.form-body {
+  text-align: center;
+  font-size: 20px;
+}
 
 
 #stage {
 position: relative;
 margin: 0 auto;
 width: 100%;
+padding-top: 1px;
 }
 .pic {
 position: absolute;
@@ -108,9 +127,7 @@ animation-delay: 40s;
   text-align: center;
   }
 
-.top-info-info img {
-  width: 100%;
-  }
+
 
 
 .main-visiual-text {
@@ -119,14 +136,165 @@ font-size: 22px;
 .top-about-under  {
   background-image: url(1087554.jpg);
   width: 100%;
-  background-position: top ;
-}
-.js {
-  float: left;
-  border-color: #FFFFFF;
-  padding-top: 70px;
 }
 
-.bottom_img {
+
+.bottom_img  {
+   text-align: center;
+  animation: rotate-anime 3s linear infinite;
+}
+@keyframes rotate-anime {
+  0%  {transform: rotate(0);}
+  100%  {transform: rotate(360deg);}
+}
+.sard-img {
+  text-align: left;
+}
+.sard-img p {
+  float: right;
+}
+
+/*.glide {
+  width: 900px!important;
+}*/
+
+.theTarget {
+
+}
+
+.login-user {
   text-align: center;
 }
+
+.top-about-page {
+  background-color:#E6FFE9;
+}
+.top-about {
+  font-style: oblique;
+  display: inline-block;
+  padding: 50px;
+}
+.top-about-iti {
+ font-size: 20px;
+}
+.about-text-main{
+  text-align: center;
+  font-style: italic;
+  font-size: 24px;
+  
+  background-position: center;
+}
+.finish-text-about {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 20px;
+  font-style: inherit;
+}
+.about-finish-top {
+  text-align: center;
+}
+.text-finish-last{
+  font-style: oblique;
+}
+.slider{
+    overflow-x: hidden;   
+}
+.slick-list{
+    overflow: visible;   
+}
+.slick-slide{
+    text-align: center;   
+}
+.slider-for img{
+    max-width: 280px;
+    height: auto;
+    box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.8);
+    display: inline-block;
+}
+.slider-for .slick-current img{
+    transform: scale(1.10);
+}  
+/* ページャー */
+.slick-dots{
+    text-align: center;
+    margin-top: 50px;
+}
+.slick-dots li{
+    display: inline !important;
+    margin: 0.5em;
+}
+.slick-dots button{
+    display: inline !important;
+    width: 1em;
+    height: 1em;
+    background-color: #ccc;
+    text-align: center;
+    overflow: hidden;
+    text-indent: 2em;
+    border-radius: 100%;
+}
+.slick-dots .slick-current button{
+    background-color: aqua;
+}
+/* スマートフォンの場合 */
+@media(min-width : 480px){
+    .slider-for img{
+        max-width: 300px;
+        border: 10px solid #fff;
+    }
+    .slider-for .slick-current img{
+        transform: scale(1.15);
+    }
+}
+
+.slider{
+    overflow-x: hidden;   
+}
+.slick-list{
+    overflow: visible;   
+}
+.slick-slide{
+    text-align: center;   
+}
+.slider-for img{
+    max-width: 280px;
+    height: auto;
+    box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.8);
+    display: inline-block;
+}
+.slider-for .slick-current img{
+    transform: scale(1.10);
+}  
+/* ページャー */
+.slick-dots{
+    text-align: center;
+    margin-top: 50px;
+}
+.slick-dots li{
+    display: inline !important;
+    margin: 0.5em;
+}
+.slick-dots button{
+    display: inline !important;
+    width: 1em;
+    height: 1em;
+    background-color: #ccc;
+    text-align: center;
+    overflow: hidden;
+    text-indent: 2em;
+    border-radius: 100%;
+}
+.slick-dots .slick-current button{
+    background-color: aqua;
+}
+/* スマートフォンの場合 */
+@media(min-width : 480px){
+    .slider-for img{
+        max-width: 300px;
+        border: 10px solid #fff;
+    }
+    .slider-for .slick-current img{
+        transform: scale(1.15);
+    }
+}
+

@@ -1,22 +1,22 @@
 Rails.application.routes.draw do
-  get "map" => 'maps#index'
-  resources :maps, only: [:index]
-  get '/map_request', to: 'maps#map', as: 'map_request'
-  devise_for :admins
+  devise_for :admins, except: [:registrations] 
   devise_for :users
+  get '/map_request', to: 'maps#map', as: 'map_request'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 root  'users#about'
 resources :users
 resources :items
- resources :blogs do
- resources :comments, only: [:create]
+resources :blogs do
+	resources :comments, only: [:create,:destroy]
+	resources :favorite_blogs
 end
 resources :admins
 resources :photos do
-resources :photo_comments, only: [:create]
+	resources :photo_comments, only: [:create,:destroy]
+	resources :favorite_photos
 end
 
-get "users_mypage" =>'users#mypage'
 get 'quit' => 'users#quit'
 
 end

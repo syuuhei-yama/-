@@ -4,19 +4,20 @@ class BlogsController < ApplicationController
 	end
 
 	def index
-	  @blogs = Blog.all
 	  @blog = Blog.new
+	  @blogs = Blog.page(params[:page]).per(5)
 	end
 
 	def create
-		blog = Blog.new(blog_params)
-		blog.user_id = current_user.id
-	    if blog.save
-	      redirect_back(fallback_location: blogs_path)
+		@blog = Blog.new(blog_params)
+		@blog.user_id = current_user.id
+	    if @blog.save
+	      redirect_to blogs_path
 	    else
-	      redirect_back(fallback_location: blogs_path)
+	      render :new
 		end
 	end
+
 
 	def show
 	  @blog = Blog.find(params[:id])

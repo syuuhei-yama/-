@@ -1,27 +1,25 @@
+<div class="photo-index">
 <h1>投稿写真一覧</h1>
  <% @photos.each do |photo| %>
-    <p>タイトル</p>
-    <span>
-    	<%= link_to photo.title, photo_path(photo.id) %>
-    </span>
+ <hr>
+  <div class="photo-title">
+    <%= link_to photo.title, photo_path(photo.id),:style=>"color:#000080;" %>
+  </div>
     <p>写真</p>
-  <%= attachment_image_tag photo, :image, :fill, 100, 100, format: 'jpeg' %>
+  <%= attachment_image_tag photo, :image, :fill, 250, 250, format: 'jpeg' %>
  <% end %>
+ <%= paginate @photos, class: "paginate" %>
+
+</div>
+
+<% if user_signed_in? %>
+  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
 <div>
  <%= link_to "登録", new_photo_path %>
 </div>
 
-
-
-<h1>コメント</h1>
-<% if user_signed_in? %>
-  <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
-  <%= link_to "マイページへ", user_path(current_user.id) %>
-  <h2>投稿する</h2>
-  <%= form_for @photo do |f| %>
-    
-    <%= f.submit %>
-  <% end %>
+ 
   <hr>
   <h2>投稿一覧</h2>
   <% @photos.each do |photo| %>

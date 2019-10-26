@@ -1,12 +1,36 @@
-<div>
+ <% if  admin_signed_in? %>
  <%= link_to "登録", new_item_path %>
-</div>
-
+<% end %> 
 <h1>登山地一覧</h1>
- <% @items.each do |item| %>
- <div>
-    <p>山名</p>
-    <span><%= link_to item.name, item_path(item.id) %></span>
- </div>
-  <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg' %>
+ <table class="table">
+  <tbody>
+  	<tr>
+     <% @items.each do |item| %>
+   <hr>
+   <div class="item-name">
+    <%= link_to item.name, item_path(item.id),:style=>"color:#000080;" %>
+   </div>
+
+        
+  <div class="item-images">
+    <tr><%= attachment_image_tag item, :image, :fill, 300, 300, format: 'jpeg' %></tr>
+  </div>
+  　　<div class="item-overviws">
+         <h2>概要</h2><tb><%= item.overview %></tb>
+      </div>
+
+    <% if  admin_signed_in? %>
+     <td><%= link_to "編集", edit_item_path(item.id) %></td>
+   　<td><%= link_to "削除", item_path(item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+   <% end %> 
+       
+
+   </tr>
+  </tbody>
+</table>
  <% end %>
+
+<%= paginate @items, class: "paginate" %>
+
+
+

@@ -1,36 +1,18 @@
 <div class="image-show">
-<%= attachment_image_tag @item, :image, :fill, 400, 400, format: 'jpeg' %>
+<%= attachment_image_tag @item, :image, :fill, 430, 430, format: 'jpeg' %>
 </div>
 
 <div class="address-map">
 <h2>住所</h2>
 <div class= "copy-menu">
-    <input id="copyTarget" type="text" size="30" value=<%= @item.address %> readonly>
-    <button onclick="copyToClipboard()">コピーする</button>
-
-    <script>
-        function copyToClipboard() {
-            // コピー対象をJavaScript上で変数として定義する
-            var copyTarget = document.getElementById("copyTarget");
-            // コピー対象のテキストを選択する
-            copyTarget.select();
-            // 選択しているテキストをクリップボードにコピーする
-            document.execCommand("Copy");
-            // コピーをお知らせする
-            alert("コピーできました！ : " + copyTarget.value);
-        }
-    </script>
+   <%= @item.address %> 
 </div>
 
 
 
 <h2>場所検索</h2>
 
-<!-- 地名入力用のinputを追加 -->
-<input id="address" type="textbox" value="">
 
-<!-- buttonをクリックしたらcodeAddressを実行　-->
-<input type="button" value="検索" onclick="codeAddress()">
 <div id='map'>
 </div>
 
@@ -58,12 +40,12 @@ function initMap(){
   center: {lat: 35.447, lng: 139.644},
   zoom: 7
   });
-}
+codeAddress();
 
+}
 function codeAddress(){
   // 入力を取得
-  let inputAddress = document.getElementById('address').value;
-
+  let inputAddress = "<%= @item.address %>"
   // geocodingしたあとmapを移動
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     if (status == 'OK') {
@@ -163,7 +145,9 @@ function codeAddress(){
 <div>
 <%= link_to "一覧へ", items_path %>
 </div>
+<% if admin_signed_in? %>
 <%= link_to "編集", edit_item_path(@item.id) %>
 <%= link_to "削除", item_path(@item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<% end %>
 
 
