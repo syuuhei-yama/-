@@ -56,7 +56,7 @@
 <h2>コメント一覧</h2>
 <% @photo_comments.each do |c| %>
   <div>
-    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+    <a href="/users/<%= c.user.id %>"><%= c.user.email %></a>
     <%= c.content %>
     <hr>
   </div>

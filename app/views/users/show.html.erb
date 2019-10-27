@@ -10,7 +10,8 @@
       <% end %>
    </div>
 
-<%= current_user.name %>
+
+
     <section class="sct-color-1 slice">
   <div class="container-fluid masonry-container">
   <div class="row">
@@ -25,13 +26,11 @@
 
     <div class= "user-destroy">
     <%= link_to "退会ページ", quit_path %>
-
 <% else %>
-    <%= event.user.name %>
+<%= @user.name %>
+
 <% end %>
     </div>
-
-    
    </div>
   </div>
 

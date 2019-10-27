@@ -62,7 +62,7 @@
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>
   <div>
-    <a href="/users/<%= @blog.user.id %>"><%= c.user.email %></a>
+    <a href="/users/<%= c.user.id %>"><%= c.user.email %></a>
     <%= c.content %>
     <br>
   </div>
