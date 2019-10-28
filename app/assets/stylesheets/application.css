@@ -23,7 +23,7 @@
   line-height: 50px;
   padding-top : 50px;
   padding-left: 400px;
-  background-image: url(RED19428A007_TP_V.jpg);
+  background-image: url(/images/RED19428A007_TP_V.jpg);
   background-position: center;
   color: white;
 }
@@ -44,7 +44,7 @@
 
 .sing-up {
   text-align: center;
-  background-image: url(KM19814331_TP_V.jpg);
+  background-image: url(/images/KM19814331_TP_V.jpg);
   line-height: 100px;
   background-position: center;
   box-shadow: 20px 20px 40px 2px rgba(0,0,0,0.5) inset;
@@ -56,7 +56,7 @@
 
 
 .right-nav-user-button  {
-	background-image: url(1494004.jpg);
+	background-image: url(/images/1494004.jpg);
 	width: 100%;
 	height:50%;
 }
@@ -165,7 +165,7 @@ h1{
   position: fixed;
   top: 0;
   left: 0;
-  background-image: url(1087551.jpg);
+  background-image: url(/images/1087551.jpg);
   background-size: 100%;
   color: #fff;
   width: 100%;
