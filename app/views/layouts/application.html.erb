@@ -25,12 +25,11 @@
 
 
  <header class="navbar-inverse">
-   <% if admin_signed_in? %>
-        <div class="navbar navbar-default navbar-fixed-top">
+<% if admin_signed_in? %>
+  <div class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="row nav navbar-nav">
+      <div class="row nav navbar-nav">
 
-          <div class="col-xs-12">
            <div class="top-logo-li col-xs-4">
               <div class="top-logo">
                 <%= link_to root_path,data: {"turbolinks" => false} do %>
@@ -38,71 +37,93 @@
                <% end %>
               </div>
             </div>
-            <div class="col-xs-3 col-xs-offset-1">
-                <div class="right-nav">
-                <div class="right-nav-user-button">
-                      　<%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete,:style=>"color:#000080;" %>
-                    </div>
-              <div class = "nav-seach">
-               <%= search_form_for @q do |f| %>
-                   <%= f.search_field :name_cont %>
-                   <%= f.submit %>
-                <% end %>
-              </div>
 
-              <% elsif user_signed_in? %>
-          <div class="right-nav-user-button">
-                <%= link_to 'マイページ', user_path(current_user.id), data: {"turbolinks" => false},:style=>"color:#000080;" %><br>
-                  <%= link_to ' HOME',users_path, data: {"turbolinks" => false},:style=>"color:#000080;" %><br>
-                  <%= link_to 'ABOUT',root_path, data: {"turbolinks" => false},:style=>"color:#000080;" %><br>
-                  <%= link_to 'ユーザーログアウト',destroy_user_session_path, data: {"turbolinks" => false},method: :delete,:style=>"color:#000080;" %><br>
-              <div class="top-logo">
-                <%= link_to root_path,data: {"turbolinks" => false} do %>
+          <div class="right-nav">
+            <div class="right-nav-user-button">
+             <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete,:style=>"color:#000080;" %>
+            </div>
+          </div>
+
+     <div class = "nav-seach">
+        <%= search_form_for @q do |f| %>
+          <%= f.search_field :name_cont %>
+           <%= f.submit %>
+        <% end %>
+     </div>
+
+<% elsif user_signed_in? %>
+        <div class="right-nav-user-button">
+            <div class="link-main-i">
+              <%= link_to 'マイページ', user_path(current_user.id), data: {"turbolinks" => false},:style=>"color:#000080;" %><br>
+            </div>
+
+            <div class="top-logo">
+              <%= link_to root_path,data: {"turbolinks" => false} do %>
                         <%=image_tag "japan.png", size: "50×50" %>
-                <% end %>
-             <div class = "nav-seach">
+            </div>
+            <div class="link-main">
+             <div class="link-main-n">
+                <%= link_to ' HOME',users_path, data: {"turbolinks" => false},:style=>"color:#000080;" %><br>
+            </div>
+            <div class="link-main-s">
+                  <%= link_to 'ABOUT',root_path, data: {"turbolinks" => false},:style=>"color:#000080;" %><br>
+            </div>
+            <div class="link-main-g">
+                  <%= link_to 'ユーザーログアウト',destroy_user_session_path, data: {"turbolinks" => false},method: :delete,:style=>"color:#000080;" %><br>
+            </div>
+        </div>
+<% end %>
+            
+              <div class = "nav-seach">
+                <div class="nav-seach-box">
                 <%= search_form_for @q do |f| %>
                    <%= f.search_field :name_cont %>
                    <%= f.submit %>
-                 <% end %>
+                </div>
+                <% end %>
              </div>
+          
 
-              </div>
+
+<% else %>
+      <div class="right-nav-user-button">
+          <div class="link-main-i">
+           <%= link_to 'こんにちは、ゲストさん',users_path,data: {"turbolinks" => false},:style=>"color:#000000;" %>
           </div>
-      </div>
-
-                <% else %>
-              <div class="right-nav-user-button">
-                      <li><%= link_to 'こんにちは、ゲストさん' %></li>
-                      <li><%= link_to ' HOME',users_path, data: {"turbolinks" => false},:style=>"color:#000080;" %></li>
-                      <li><%= link_to 'ABOUT',root_path, data: {"turbolinks" => false},:style=>"color:#000080;" %></li>
-
-                      <li><%=link_to 'ユーザー新規登録',new_user_registration_path, data: {"turbolinks" => false},:style=>"color:#000080;" %></li>
-                      <li><%= link_to ' ユーザーログイン',new_user_session_path, data: {"turbolinks" => false},:style=>"color:#000080;" %></li>
-
-                    <div class="top-logo">
+          <div class="link-main-y">
+           <%=link_to 'ユーザー新規登録',new_user_registration_path, data: {"turbolinks" => false},:style=>"color:#000080;" %>
+          </div>
+          <div class="top-logo">
                 <%= link_to root_path,data: {"turbolinks" => false} do %>
                 <%=image_tag "japan.png", size: "50×50" %>
-               <% end %>
-           <div class = "nav-seach">
-                <%= search_form_for @q do |f| %>
-                   <%= f.search_field :name_cont %>
-                   <%= f.submit %>
-                 <% end %>
-           </div> 
-        </div>
-      </div>
-
-             
-        </div>
-      </div>
-
           </div>
+          <div class="link-main">
+          <div class="link-main-n">
+           <%= link_to ' HOME',users_path, data: {"turbolinks" => false},:style=>"color:#000080;" %>
+          </div>
+          <div class="link-main-s">
+           <%= link_to 'ABOUT',root_path, data: {"turbolinks" => false},:style=>"color:#000080;" %>
+          </div>
+          <div class="link-main-g">
+           <%= link_to ' ユーザーログイン',new_user_session_path, data: {"turbolinks" => false},:style=>"color:#000080;" %>
+          </div>
+       </div>
+<% end %>
+        <div class = "nav-seach">
+          <div class="nav-seach-box">
+          <%= search_form_for @q do |f| %>
+            <%= f.search_field :name_cont, placeholder: "登山地検索", :size => "30*30"  %>
+              <%= f.submit %>
+          </div>
+          <% end %>
         </div>
+
+      </div>
     </div>
   </div> 
-    <% end %>
+<% end %>
 </header><!-- /header -->
+
  <body>
   <div id="sp-menu">
       <h2>MENU</h2>
@@ -115,20 +136,19 @@
        <li><%= link_to "投稿写真一覧",photos_path,data: {"turbolinks" => false} %></li><br>
        <li><%= link_to "お問い合わせ",users_path,data: {"turbolinks" => false} %></li><br>
       </ul>
-    </div>
- 
-    <div id="hm-icon">
-      <a class="menu-trigger" href="#">
+  </div>
+<div class="hm-icon-top">
+  <div id="hm-icon">
+    <a class="menu-trigger" href="#">
         <span></span>
         <span></span>
         <span></span>
-      </a>
-    </div>
-
+    </a>
+  </div>
 </div>
-
-    <%= yield %>
+<%= yield %>
  </body>
+
   <footer>
     <%= image_tag '/images/publicdomainq-0023635zun.jpg', :size =>'1450x250'%>
   </footer>

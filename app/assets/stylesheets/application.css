@@ -17,6 +17,29 @@
 #container{
   height: 500px;
  }
+.link-main-i {
+}
+.link-main{
+  font-style:oblique;
+  display: inline-block;
+  font-size: 20px;
+  font-family: monospace;
+  padding-left: 30px;
+}
+.link-main-n {
+ display: inline-block;
+ padding-right: 30px;
+}
+.link-main-s {
+ display: inline-block;
+ padding-right: 20px;
+}
+.link-main-y {
+ display: inline-block;
+}
+.link-main-g {
+ display: inline-block;
+}
 
 .login {
   text-align: center ;
@@ -36,12 +59,9 @@
   box-shadow: 3px 3px #000000;
   transition: .3s;
 }
-
 .login-text:hover {
   box-shadow: 1px 1px #ffbe75;
 }
-
-
 .sing-up {
   text-align: center;
   background-image: url(/images/KM19814331_TP_V.jpg);
@@ -49,10 +69,6 @@
   background-position: center;
   box-shadow: 20px 20px 40px 2px rgba(0,0,0,0.5) inset;
 }
-.sing-up-text {
-
-}
-
 
 
 .right-nav-user-button  {
@@ -69,7 +85,6 @@
   margin-bottom: 20px;
   font-size: 20px;
   color: #FFFF00;
-  
 }
 
 
@@ -160,7 +175,7 @@ h1{
 /* ------ spメニュー ------ */
 /* ------------------------ */
  
- 
+
 #sp-menu {
   position: fixed;
   top: 0;
