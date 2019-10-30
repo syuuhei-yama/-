@@ -67,11 +67,12 @@
     <br>
   </div>
 <% end %>
-
-<%= form_for [@blog, @comment] do |f| %>
+<% if user_signed_in? %>
+  <%= form_for [@blog, @comment] do |f| %>
   <%= f.text_field :content %>
   <br>
   <%= f.submit 'コメントする' %>
+  <% end %>
 <% end %>
 
 <%= link_to "戻る", blogs_path %>

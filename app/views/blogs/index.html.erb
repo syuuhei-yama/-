@@ -1,25 +1,32 @@
-
+<% if flash[:success] %>
+  <%= flash[:success] %>
+<% end %>
+<% if user_signed_in? %>
+<div>
+ <%= link_to "記録登録", new_blog_path %>
+</div>
+<% end %>
 <h1>登山記録投稿一覧</h1>
 <!-- form_for部分 -->
 <div class="blog-main">
+  <div class="blog-text-a">
 <% @blogs.each do |blog| %>
- <div class="blog-main-text">
-<p>タイトル</p>
+  <div class="blog-main-text">
+   <p>タイトル</p>
     <span>
     	<%=link_to blog.title, blog_path(blog.id) %>
     </span>
- </div>
+   </div>
   <%= attachment_image_tag blog, :image, :fill, 200, 200, format: 'jpeg' %>
 <% end %>
+ </div>
 </div>
+
 <%= paginate @blogs, class: "paginate" %>
 
 
 
 <% if user_signed_in? %>
-<div>
- <%= link_to "記録登録", new_blog_path %>
-</div>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
   <%= link_to "マイページへ", user_path(current_user.id) %>
  

@@ -27,6 +27,7 @@ class PhotosController < ApplicationController
   	@photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
     if @photo.save
+      flash[:success] = "投稿に成功しました。"
       redirect_to photos_path
     else
       render :new
@@ -35,6 +36,7 @@ class PhotosController < ApplicationController
   def destroy
   	photo = Photo.find(params[:id]) 
     photo.destroy
+    flash[:success] = "投稿を削除しました。"
     redirect_to  photos_path
   end
 

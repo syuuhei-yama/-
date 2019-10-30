@@ -12,6 +12,7 @@ class BlogsController < ApplicationController
 		@blog = Blog.new(blog_params)
 		@blog.user_id = current_user.id
 	    if @blog.save
+	    	 flash[:success] = "投稿に成功しました。"
 	      redirect_to blogs_path
 	    else
 	      render :new
@@ -38,6 +39,7 @@ class BlogsController < ApplicationController
 	 def destroy
 	 	blog = Blog.find(params[:id])
         blog.destroy
+        flash[:success] = "投稿を削除しました。"
         redirect_to blogs_path
 	 end
 

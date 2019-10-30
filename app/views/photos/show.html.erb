@@ -61,11 +61,14 @@
     <hr>
   </div>
 <% end %>
-
-<%= form_for [@photo, @photo_comment] do |f| %>
+<% if user_signed_in? %>
+　<%= form_for [@photo, @photo_comment] do |f| %>
   <%= f.text_field :content %>
   <br>
   <%= f.submit 'コメントする' %>
+　<% end %>
 <% end %>
+
+
 
 <%= link_to "ホームへ戻る", photos_path %>

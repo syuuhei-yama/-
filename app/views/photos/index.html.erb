@@ -1,4 +1,12 @@
+<% if flash[:success] %>
+  <%= flash[:success] %>
+<% end %>
 <div class="photo-index">
+      <% if user_signed_in? %>
+      <div>
+       <%= link_to "登録", new_photo_path %>
+      </div>
+      <% end %>
 <h1>投稿写真一覧</h1>
  <% @photos.each do |photo| %>
  <hr>
@@ -15,9 +23,6 @@
 <% if user_signed_in? %>
   <%= link_to "ログアウト", destroy_user_session_path, :method => :delete %>
   <%= link_to "マイページへ", user_path(current_user.id) %>
-<div>
- <%= link_to "登録", new_photo_path %>
-</div>
 
  
   <hr>
