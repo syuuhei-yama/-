@@ -42,4 +42,4 @@ stdout_redirect(
   true
 )
 # デーモン
-#daemonize
+daemonize
