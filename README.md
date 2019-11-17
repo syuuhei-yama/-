@@ -1,24 +1,29 @@
-# README
+# Mountain JAPANとは
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+登山者同士で情報を共有し、これから登山を始める方や長年登山をしている方がより安全に登山を行えることを目的としたwebサイトです。
 
-Things you may want to cover:
+作成した理由は、最近登山者による大きな事故が増えていると感じ、殆どの事故が準備不足や知識不足で起きていると感じたため、初心者〜ベテランが情報を共有することで未然に事故を減らすことが出来ると考えました。
 
-* Ruby version
+# 実装機能
 
-* System dependencies
+* 登山記録の投稿
 
-* Configuration
+* 思い出写真の投稿
 
-* Database creation
+* 投稿に対するコメント・いいね
 
-* Database initialization
+* slickによる、新着投稿のスライド表示
 
-* How to run the test suite
+* skipperをメインビジュアルに実装
 
-* Services (job queues, cache servers, search engines, etc.)
+*　APIを使い、GoogleMapを表示し、登山地の住所にピンが刺さるように設定
 
-* Deployment instructions
+*APIを使用し、東京の天気情報を取得出来る。
 
-* ...
+* gem ransackを使用し、登山地を検索する
+
+
+# 最後に
+
+* 本サイトをきっかけに登山に興味を持って頂けたら嬉しいです！
+

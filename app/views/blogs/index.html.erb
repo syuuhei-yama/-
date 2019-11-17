@@ -14,7 +14,7 @@
   <div class="blog-main-text">
    <p>タイトル</p>
     <span>
-    	<%=link_to blog.title, blog_path(blog.id) %>
+    	<%=link_to blog.title, blog_path(blog.id),data: {"turbolinks" => false} %>
     </span>
    </div>
   <%= attachment_image_tag blog, :image, :fill, 200, 200, format: 'jpeg' %>

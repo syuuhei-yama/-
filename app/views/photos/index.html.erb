@@ -11,7 +11,7 @@
  <% @photos.each do |photo| %>
  <hr>
   <div class="photo-title">
-    <%= link_to photo.title, photo_path(photo.id),:style=>"color:#000080;" %>
+    <%= link_to photo.title, photo_path(photo.id),data: {"turbolinks" => false},:style=>"color:#000080;" %>
   </div>
     <p>写真</p>
   <%= attachment_image_tag photo, :image, :fill, 250, 250, format: 'jpeg' %>

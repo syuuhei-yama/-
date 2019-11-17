@@ -1,6 +1,6 @@
  <% if  admin_signed_in? %>
  <%= link_to "登録", new_item_path %>
-<% end %> 
+<% end %>
 <h1>登山地一覧</h1>
  <table class="table">
   <tbody>
@@ -8,7 +8,7 @@
      <% @items.each do |item| %>
    <hr>
    <div class="item-name">
-    <%= link_to item.name, item_path(item.id),:style=>"color:#000080;" %>
+    <%= link_to item.name, item_path(item.id),data: {"turbolinks" => false}, :style=>"color:#000080;" %>
    </div>
 
         
@@ -22,7 +22,7 @@
     <% if  admin_signed_in? %>
      <td><%= link_to "編集", edit_item_path(item.id) %></td>
    　<td><%= link_to "削除", item_path(item.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
-   <% end %> 
+   <% end %>
        
 
    </tr>
